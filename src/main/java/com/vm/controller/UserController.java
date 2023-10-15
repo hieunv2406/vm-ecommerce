@@ -1,14 +1,18 @@
 package com.vm.controller;
 
-import com.vm.dto.ResultDto;
-import com.vm.dto.UserDto;
-import com.vm.entities.User;
-import com.vm.exceptions.UserNotFoundException;
-import com.vm.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.vm.dto.ResultDto;
+import com.vm.dto.UserDto;
+import com.vm.exceptions.UserNotFoundException;
+import com.vm.services.UserService;
 
 @RestController
 @RequestMapping(value = "/api/user")
@@ -25,6 +29,6 @@ public class UserController {
     @PutMapping(path = "/edit")
     public ResponseEntity<ResultDto> editUser(@RequestBody UserDto userDto) throws UserNotFoundException {
         ResultDto resultDto = userService.editUser(userDto);
-        return new ResponseEntity<>(new ResultDto(), HttpStatus.OK);
+        return new ResponseEntity<>(resultDto, HttpStatus.OK);
     }
 }

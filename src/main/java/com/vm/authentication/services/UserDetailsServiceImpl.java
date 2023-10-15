@@ -28,12 +28,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
         UserDto userDTO = user.toInSiteDTO();
-        Set<RolesDto> rolesDtos = new HashSet<>();
+        Set<RolesDto> rolesDtoList = new HashSet<>();
         List<UserRole> userRoleEntityList = user.getUserRoles();
         for (UserRole dto : userRoleEntityList) {
-            rolesDtos.add(dto.getRole().toDTO());
+            rolesDtoList.add(dto.getRole().toDTO());
         }
-        userDTO.setRoles(rolesDtos);
+        userDTO.setRoles(rolesDtoList);
         return JwtUserDetails.build(userDTO);
     }
 }

@@ -1,10 +1,18 @@
 package com.vm.dto;
 
-import com.vm.entities.InvoiceItem;
-import lombok.Data;
-
 import java.util.List;
-@Data
+
+import com.vm.entities.InvoiceItem;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class InvoiceRequest extends BaseDto {
     private Long invoiceId;
     private Double totalAmount;
